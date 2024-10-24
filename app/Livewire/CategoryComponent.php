@@ -10,15 +10,16 @@ use Livewire\Component;
 use Livewire\Features\SupportPagination\WithoutUrlPagination;
 use Livewire\WithPagination;
 
-class ShopComponent extends Component
+class CategoryComponent extends Component
 {
-    
     use WithPagination , WithoutUrlPagination;
-    #[Title('Shop')]
+    #[Title('Category')]
 
     protected $listeners = ['refreshCart'=>'$refresh'];
-
+    
     protected $paginationTheme = 'bootstrap';
+
+    public $slug;
    
     public $productPerPage =12;
 
@@ -27,6 +28,10 @@ class ShopComponent extends Component
     public $minPrice = 0;
 
     public $maxPrice = 1000;
+
+    public function mount($slug){
+        $this->slug =$slug;
+    }
     
     public function setProductPerPage($productPerPage){
         $this->productPerPage = $productPerPage;
@@ -36,14 +41,13 @@ class ShopComponent extends Component
         $this->orderBy = $column;
     }
 
-
-   
     public function render()
     {
         $categories = Category::where('status', 1)->get();
-
+        $category = Category::where('slug', $this->slug)->first();
         //Product Order By Section
-        $products = Product::query();
+        $products = Product::where('category_id', $category->id);
+
         if($this->orderBy == 'Price: Low to High'){
             $products->orderBy('sale_price', 'asc');
         }
@@ -60,8 +64,8 @@ class ShopComponent extends Component
         if($this->minPrice!=0 || $this->maxPrice!=1000){
             $products->whereBetween('sale_price', [$this->minPrice, $this->maxPrice]);
         }
+        $new_products = Product::where('category_id', $category->id)->latest()->take(3)->get();
 
-        $new_products = Product::latest()->take(3)->get();
         $productPerPageOptions = [ 12, 24, 36, 48,60 ];
 
         $sortingOptions = [
@@ -73,19 +77,21 @@ class ShopComponent extends Component
             'Avg. Rating'
         ];
 
-        return view('livewire.shop-component', [
+        return view('livewire.category-component', [
             'productPerPageOptions'=>$productPerPageOptions,
             'sortingOptions'=>$sortingOptions,
             'categories' => $categories,
+            'category_name' => $category->name,
             'products' => $products->paginate($this->productPerPage),
             'new_products' => $new_products
         ]);
     }
 
-    //Add to cart
+    
     public function addToCart($product){
         Cart::instance('cart')->add($product['id'], $product['name'], 1, $product['sale_price'])->associate('App\Models\Product');
         $this->dispatch('refreshCart');
         flash()->success('Product added to the cart successfully!');
     }
+    
 }

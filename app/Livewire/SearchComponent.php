@@ -10,15 +10,15 @@ use Livewire\Component;
 use Livewire\Features\SupportPagination\WithoutUrlPagination;
 use Livewire\WithPagination;
 
-class ShopComponent extends Component
+class SearchComponent extends Component
 {
-    
     use WithPagination , WithoutUrlPagination;
-    #[Title('Shop')]
+    #[Title('Search Product')]
 
     protected $listeners = ['refreshCart'=>'$refresh'];
-
+    
     protected $paginationTheme = 'bootstrap';
+
    
     public $productPerPage =12;
 
@@ -27,6 +27,14 @@ class ShopComponent extends Component
     public $minPrice = 0;
 
     public $maxPrice = 1000;
+
+    public $search;
+    public $search_term;
+
+    public function mount(){
+        $this->fill(request()->only('search'));
+        $this->search_term = '%'.$this->search.'%';
+    }
     
     public function setProductPerPage($productPerPage){
         $this->productPerPage = $productPerPage;
@@ -36,14 +44,12 @@ class ShopComponent extends Component
         $this->orderBy = $column;
     }
 
-
-   
     public function render()
     {
         $categories = Category::where('status', 1)->get();
-
         //Product Order By Section
-        $products = Product::query();
+        $products = Product::where('name', 'like', $this->search_term);
+
         if($this->orderBy == 'Price: Low to High'){
             $products->orderBy('sale_price', 'asc');
         }
@@ -60,8 +66,8 @@ class ShopComponent extends Component
         if($this->minPrice!=0 || $this->maxPrice!=1000){
             $products->whereBetween('sale_price', [$this->minPrice, $this->maxPrice]);
         }
-
         $new_products = Product::latest()->take(3)->get();
+
         $productPerPageOptions = [ 12, 24, 36, 48,60 ];
 
         $sortingOptions = [
@@ -73,7 +79,7 @@ class ShopComponent extends Component
             'Avg. Rating'
         ];
 
-        return view('livewire.shop-component', [
+        return view('livewire.search-component', [
             'productPerPageOptions'=>$productPerPageOptions,
             'sortingOptions'=>$sortingOptions,
             'categories' => $categories,
@@ -82,10 +88,11 @@ class ShopComponent extends Component
         ]);
     }
 
-    //Add to cart
+    
     public function addToCart($product){
         Cart::instance('cart')->add($product['id'], $product['name'], 1, $product['sale_price'])->associate('App\Models\Product');
         $this->dispatch('refreshCart');
         flash()->success('Product added to the cart successfully!');
     }
+    
 }

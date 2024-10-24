@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -16,7 +17,7 @@ class CartComponent extends Component
        $product=   Cart::instance('cart')->get($rowId);
        $quantity = $product->qty +1;
        Cart::instance('cart')->update($rowId, $quantity);
-       $this->dispatch('refreshComponent');
+       $this->dispatch('refreshCart');
     }
 
     public function decreaseQuantity($rowId){
@@ -24,19 +25,19 @@ class CartComponent extends Component
         if($product->qty > 1){
             $quantity = $product->qty -1;
             Cart::instance('cart')->update($rowId, $quantity);
-            $this->dispatch('refreshComponent');
+            $this->dispatch('refreshCart');
         }
     }
 
     public function removeItem($rowId){
         Cart::instance('cart')->remove($rowId);
-        $this->dispatch('refreshComponent');
+        $this->dispatch('refreshCart');
         flash()->success('Product has been removed  successfully!');
     }
 
     public function clearCart(){
         Cart::instance('cart')->destroy();
-        $this->dispatch('refreshComponent');
+        $this->dispatch('refreshCart');
         flash()->success('All the products form the cart  have been removed  successfully!');
     }
 
@@ -46,10 +47,13 @@ class CartComponent extends Component
         $cart_items = Cart::instance('cart')->content();
         $cart_subtotal = Cart::instance('cart')->subtotal();
         $cart_total = Cart::instance('cart')->total();
+        $products = Product::inRandomOrder()->take(12)->get();
+
         return view('livewire.cart-component' , [
             'cart_items' => $cart_items, 
             'cart_subtotal' => $cart_subtotal,
-            'cart_total' => $cart_total
+            'cart_total' => $cart_total,
+            'products' => $products
         ]);
     }
 }

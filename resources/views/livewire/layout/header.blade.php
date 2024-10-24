@@ -10,11 +10,14 @@
                                     <a class="language-dropdown-active" href="#"> <i class="fi-rs-world"></i>
                                         English <i class="fi-rs-angle-small-down"></i></a>
                                     <ul class="language-dropdown">
-                                        <li><a href="#"><img src="assets/imgs/theme/flag-fr.png"
+                                        <li><a href="#"><img
+                                                    src="{{ asset('/') }}assets/imgs/theme/flag-fr.png"
                                                     alt="">Français</a></li>
-                                        <li><a href="#"><img src="assets/imgs/theme/flag-dt.png"
+                                        <li><a href="#"><img
+                                                    src="{{ asset('/') }}assets/imgs/theme/flag-dt.png"
                                                     alt="">Deutsch</a></li>
-                                        <li><a href="#"><img src="assets/imgs/theme/flag-ru.png"
+                                        <li><a href="#"><img
+                                                    src="{{ asset('/') }}assets/imgs/theme/flag-ru.png"
                                                     alt="">Pусский</a></li>
                                     </ul>
                                 </li>
@@ -62,23 +65,15 @@
             <div class="container">
                 <div class="header-wrap">
                     <div class="logo logo-width-1">
-                        <a href="/" wire:navigate><img src="../assets/imgs/logo/logo.png" alt="logo"></a>
+                        <a href="/" wire:navigate><img src="{{ asset('/') }}assets/imgs/logo/logo.png"
+                                alt="logo"></a>
                     </div>
                     <div class="header-right">
-                        <div class="search-style-1">
-                            <form action="#">
-                                <input type="text" placeholder="Search for items...">
-                            </form>
-                        </div>
+                        @livewire('layout.search-header')
                         <div class="header-action-right">
                             <div class="header-action-2">
-                                <div class="header-action-icon-2">
-                                    <a href="shop-wishlist.php">
-                                        <img class="svgInject" alt="Surfside Media"
-                                            src="../assets/imgs/theme/icons/icon-heart.svg">
-                                        <span class="pro-count blue">4</span>
-                                    </a>
-                                </div>
+                                {{-- Wishlist Icon --}}
+                                @livewire('layout.wishlist-icon-component')
                                 {{-- Cart Icon --}}
                                 @livewire('layout.cart-icon-component')
                             </div>
@@ -91,7 +86,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between position-relative">
                     <div class="logo logo-width-1 d-block d-lg-none">
-                        <a href="index.html"><img src="assets/imgs/logo/logo.png" alt="logo"></a>
+                        <a href="index.html"><img src="{{ asset('/') }}assets/imgs/logo/logo.png" alt="logo"></a>
                     </div>
                     <div class="header-nav d-none d-lg-flex">
                         <div class="main-categori-wrap d-none d-lg-block">
@@ -154,7 +149,7 @@
                                                 </li>
                                                 <li class="mega-menu-col col-lg-5">
                                                     <div class="header-banner2">
-                                                        <img src="assets/imgs/banner/menu-banner-2.jpg"
+                                                        <img src="{{ asset('/') }}assets/imgs/banner/menu-banner-2.jpg"
                                                             alt="menu_banner1">
                                                         <div class="banne_info">
                                                             <h6>10% Off</h6>
@@ -163,7 +158,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="header-banner2">
-                                                        <img src="assets/imgs/banner/menu-banner-3.jpg"
+                                                        <img src="{{ asset('/') }}assets/imgs/banner/menu-banner-3.jpg"
                                                             alt="menu_banner2">
                                                         <div class="banne_info">
                                                             <h6>15% Off</h6>
@@ -228,7 +223,7 @@
                                                 </li>
                                                 <li class="mega-menu-col col-lg-5">
                                                     <div class="header-banner2">
-                                                        <img src="assets/imgs/banner/menu-banner-4.jpg"
+                                                        <img src="{{ asset('/') }}assets/imgs/banner/menu-banner-4.jpg"
                                                             alt="menu_banner1">
                                                         <div class="banne_info">
                                                             <h6>10% Off</h6>
@@ -295,7 +290,7 @@
                                                 </li>
                                                 <li class="mega-menu-col col-lg-5">
                                                     <div class="header-banner2">
-                                                        <img src="assets/imgs/banner/menu-banner-5.jpg"
+                                                        <img src="{{ asset('/') }}assets/imgs/banner/menu-banner-5.jpg"
                                                             alt="menu_banner1">
                                                         <div class="banne_info">
                                                             <h6>10% Off</h6>
@@ -304,7 +299,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="header-banner2">
-                                                        <img src="assets/imgs/banner/menu-banner-6.jpg"
+                                                        <img src="{{ asset('/') }}assets/imgs/banner/menu-banner-6.jpg"
                                                             alt="menu_banner2">
                                                         <div class="banne_info">
                                                             <h6>15% Off</h6>
@@ -349,9 +344,12 @@
                         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                             <nav>
                                 <ul>
-                                    <li><a class="active" href="/" wire:navigate>Home </a></li>
-                                    <li><a href="/about" wire:navigate>About</a></li>
-                                    <li><a href="/shop" wire:navigate>Shop</a></li>
+                                    <li><a class="{{ request()->is('/') ? 'active' : '' }}" href="/"
+                                            wire:navigate>Home </a></li>
+                                    <li><a href="/about" class="{{ request()->is('about') ? 'active' : '' }}"
+                                            wire:navigate>About</a></li>
+                                    <li><a href="/shop" class="{{ request()->is('shop') ? 'active' : '' }}"
+                                            wire:navigate>Shop</a></li>
                                     {{-- <li class="position-static"><a href="#">Our Collections <i
                                                 class="fi-rs-angle-down"></i></a>
                                         <ul class="mega-menu">
@@ -412,8 +410,15 @@
                                             </li>
                                         </ul>
                                     </li> --}}
-                                    <li><a href="blog.html">Blog </a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="/blog" class="{{ request()->is('blog') ? 'active' : '' }}"
+                                            wire:navigate>Blog
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/contact" class="{{ request()->is('contact') ? 'active' : '' }}"
+                                            wire:navigate>Contact
+                                        </a>
+                                    </li>
                                     <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                         @auth
                                             @if (Auth::user()->user_type == 'admin')
@@ -450,13 +455,15 @@
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
                                 <a href="shop-wishlist.php">
-                                    <img alt="Surfside Media" src="assets/imgs/theme/icons/icon-heart.svg">
+                                    <img alt="Surfside Media"
+                                        src="{{ asset('/') }}assets/imgs/theme/icons/icon-heart.svg">
                                     <span class="pro-count white">4</span>
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="cart.html">
-                                    <img alt="Surfside Media" src="assets/imgs/theme/icons/icon-cart.svg">
+                                    <img alt="Surfside Media"
+                                        src="{{ asset('/') }}assets/imgs/theme/icons/icon-cart.svg">
                                     <span class="pro-count white">2</span>
                                 </a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
@@ -464,7 +471,7 @@
                                         <li>
                                             <div class="shopping-cart-img">
                                                 <a href="product-details.html"><img alt="Surfside Media"
-                                                        src="assets/imgs/shop/thumbnail-3.jpg"></a>
+                                                        src="{{ asset('/') }}assets/imgs/shop/thumbnail-3.jpg"></a>
                                             </div>
                                             <div class="shopping-cart-title">
                                                 <h4><a href="product-details.html">Plain Striola Shirts</a></h4>
@@ -477,7 +484,7 @@
                                         <li>
                                             <div class="shopping-cart-img">
                                                 <a href="product-details.html"><img alt="Surfside Media"
-                                                        src="assets/imgs/shop/thumbnail-4.jpg"></a>
+                                                        src="{{ asset('/') }}assets/imgs/shop/thumbnail-4.jpg"></a>
                                             </div>
                                             <div class="shopping-cart-title">
                                                 <h4><a href="product-details.html">Macbook Pro 2022</a></h4>
@@ -516,7 +523,8 @@
         <div class="mobile-header-wrapper-inner">
             <div class="mobile-header-top">
                 <div class="mobile-header-logo">
-                    <a href="index.html"><img src="assets/imgs/logo/logo.png" alt="logo"></a>
+                    <a href="/" wire:navigate><img src="{{ asset('/') }}assets/imgs/logo/logo.png"
+                            alt="logo"></a>
                 </div>
                 <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                     <button class="close-style search-close">
@@ -627,11 +635,16 @@
                 </div>
                 <div class="mobile-social-icon">
                     <h5 class="mb-15 text-grey-4">Follow Us</h5>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                    <a href="#"><img src="{{ asset('/') }}assets/imgs/theme/icons/icon-facebook.svg"
+                            alt=""></a>
+                    <a href="#"><img src="{{ asset('/') }}assets/imgs/theme/icons/icon-twitter.svg"
+                            alt=""></a>
+                    <a href="#"><img src="{{ asset('/') }}assets/imgs/theme/icons/icon-instagram.svg"
+                            alt=""></a>
+                    <a href="#"><img src="{{ asset('/') }}assets/imgs/theme/icons/icon-pinterest.svg"
+                            alt=""></a>
+                    <a href="#"><img src="{{ asset('/') }}assets/imgs/theme/icons/icon-youtube.svg"
+                            alt=""></a>
                 </div>
             </div>
         </div>

@@ -23,6 +23,9 @@ return new class extends Migration
             $table->longText('images')->nullable();
             $table->string('size')->nullable();
             $table->string('color')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->boolean('is_featured')->default(false);
+            $table->boolean('on_sale')->default(true);
             $table->string('category_id');
             $table->timestamps();
         });

@@ -74,6 +74,9 @@ class ProductSeeder extends Seeder
             'images' => json_encode($images),
             'size'=>json_encode($size),
             'color'=>json_encode($color),
+            'is_active'=>true,
+            'is_featured'=>rand(true, false),
+            'on_sale'=>rand(true, false),
             'category_id'=>$faker->numberBetween(1,10)
         ]);
        };

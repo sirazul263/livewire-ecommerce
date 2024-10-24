@@ -33,29 +33,33 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="widget-about font-md mb-md-5 mb-lg-0">
                             <div class="logo logo-width-1 wow fadeIn animated">
-                                <a href="index.html"><img src="../assets/imgs/logo/logo.png" alt="logo"></a>
+                                <a href="/" wire:navigate><img src="../assets/imgs/logo/logo.png" alt="logo">
+                                </a>
                             </div>
                             <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
                             <p class="wow fadeIn animated">
-                                <strong>Address: </strong>562 Wellington Road
+                                <strong>Address: </strong>J-32 Mirpur, Dhaka
                             </p>
                             <p class="wow fadeIn animated">
-                                <strong>Phone: </strong>+1 0000-000-000
+                                <strong>Phone: </strong>+880 1734-320-986
                             </p>
                             <p class="wow fadeIn animated">
                                 <strong>Email: </strong>contact@surfsidemedia.in
                             </p>
                             <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
                             <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
-                                <a href="#"><img src="../assets/imgs/theme/icons/icon-facebook.svg"
+                                <a href="#"><img
+                                        src="{{ asset('/') }}assets/imgs/theme/icons/icon-facebook.svg"
                                         alt=""></a>
-                                <a href="#"><img src="../assets/imgs/theme/icons/icon-twitter.svg"
+                                <a href="#"><img src="{{ asset('/') }}assets/imgs/theme/icons/icon-twitter.svg"
                                         alt=""></a>
-                                <a href="#"><img src="../assets/imgs/theme/icons/icon-instagram.svg"
+                                <a href="#"><img
+                                        src="{{ asset('/') }}assets/imgs/theme/icons/icon-instagram.svg"
                                         alt=""></a>
-                                <a href="#"><img src="../assets/imgs/theme/icons/icon-pinterest.svg"
+                                <a href="#"><img
+                                        src="{{ asset('/') }}assets/imgs/theme/icons/icon-pinterest.svg"
                                         alt=""></a>
-                                <a href="#"><img src="../assets/imgs/theme/icons/icon-youtube.svg"
+                                <a href="#"><img src="{{ asset('/') }}assets/imgs/theme/icons/icon-youtube.svg"
                                         alt=""></a>
                             </div>
                         </div>
@@ -87,15 +91,16 @@
                                 <p class="wow fadeIn animated">From App Store or Google Play</p>
                                 <div class="download-app wow fadeIn animated mob-app">
                                     <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active"
-                                            src="../assets/imgs/theme/app-store.jpg" alt=""></a>
-                                    <a href="#" class="hover-up"><img src="../assets/imgs/theme/google-play.jpg"
+                                            src="{{ asset('/') }}assets/imgs/theme/app-store.jpg" alt=""></a>
+                                    <a href="#" class="hover-up"><img
+                                            src="{{ asset('/') }}assets/imgs/theme/google-play.jpg"
                                             alt=""></a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
                                 <p class="mb-20 wow fadeIn animated">Secured Payment Gateways</p>
-                                <img class="wow fadeIn animated" src="../assets/imgs/theme/payment-method.png"
-                                    alt="">
+                                <img class="wow fadeIn animated"
+                                    src="{{ asset('/') }}assets/imgs/theme/payment-method.png" alt="">
                             </div>
                         </div>
                     </div>

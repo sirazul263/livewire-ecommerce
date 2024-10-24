@@ -13,7 +13,11 @@
                 <div class="col-lg-9">
                     <div class="shop-product-fillter">
                         <div class="totall-product">
-                            <p> We found <strong class="text-brand">{{ $products->total() }}</strong> items for you!</p>
+                            <p> We found <strong class="text-brand">{{ $products->total() }}</strong> items for you !
+                                <strong>
+                                    {{ $category_name }}
+                                </strong>
+                            </p>
                         </div>
                         <div class="sort-by-product-area">
                             <div class="sort-by-cover mr-10">
@@ -70,7 +74,7 @@
                                             <a href="/products/{{ $product->slug }}" wire:navigate>
                                                 <img class="default-img" src="{{ $product->image }}"
                                                     alt="{{ $product->name }}">
-                                                <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg"
+                                                <img class="hover-img" src="../assets/imgs/shop/product-2-2.jpg"
                                                     alt="">
                                             </a>
                                         </div>
@@ -92,8 +96,8 @@
                                             <a href="/product-category/{{ $product->category->slug }}"
                                                 wire:navigate>{{ $product->category->name }}</a>
                                         </div>
-                                        <h2><a wire:navigate
-                                                href="/products/{{ $product->slug }}">{{ $product->name }}</a></h2>
+                                        <h2><a href="/products/{{ $product->slug }}"
+                                                wire:navigate>{{ $product->name }}</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>90%</span>
@@ -131,8 +135,8 @@
                         <ul class="categories">
                             @foreach ($categories as $category)
                                 <li wire:key="{{ $category->id }}">
-                                    <a wire:navigate
-                                        href="/product-category/{{ $category->slug }}">{{ $category->name }}</a>
+                                    <a wire:navigate href="/product-category/{{ $category->slug }}"
+                                        wire:navigate>{{ $category->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -194,9 +198,8 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="/shop" wire:navigate class="btn btn-sm btn-default"><i
-                                class="fi-rs-filter mr-5"></i>
-                            Filter</a>
+                        <a href="shop.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i>
+                            Fillter</a>
                     </div>
                     <!-- Product sidebar Widget -->
                     <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
@@ -211,8 +214,7 @@
                                     <img src="{{ $product->image }}" alt="#">
                                 </div>
                                 <div class="content pt-10">
-                                    <h6><a href="/products/{{ $product->slug }}"
-                                            wire:navigate>{{ $product->name }}</a></h6>
+                                    <h6><a href="product-details.html">{{ $product->name }}</a></h6>
                                     <p class="price mb-0 mt-5">&#2547; {{ $product->regular_price }} </p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:60%"></div>
@@ -226,7 +228,7 @@
                         <div class="banner-text">
                             <span>Women Zone</span>
                             <h4>Save 17% on <br>Office Dress</h4>
-                            <a href="/shop" wire:navigate>Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            <a href="shop.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

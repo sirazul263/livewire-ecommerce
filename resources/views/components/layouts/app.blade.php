@@ -50,7 +50,11 @@
     <!-- Template  JS -->
     <script src="{{ asset('/') }}assets/js/main.js?v=3.3"></script>
     <script src="{{ asset('/') }}assets/js/shop.js?v=3.3"></script>
+    <script>
+        $.fn.modal.Constructor.prototype.show = () => $('.modal-backdrop').not(":first").remove();
+    </script>
     @livewireScripts
+    @stack('scripts')
 
 </body>
 

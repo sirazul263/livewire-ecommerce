@@ -1,161 +1,108 @@
 <div>
-    {{-- <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel"
-        aria-hidden="true">
+    <style>
+        .wishlisted {
+            background-color: #F15412 !important;
+            border: 1px solid transparent !important;
+        }
+
+        .wishlisted i {
+            color: #FFF
+        }
+    </style>
+
+    <div wire:ignore class="modal fade custom-modal" id="quickViewModal" tabindex="-1"
+        aria-labelledby="quickViewModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <div class="detail-gallery">
-                                <span class="zoom-icon"><i class="fi-rs-search"></i></span>
-                                <!-- MAIN SLIDES -->
-                                <div class="product-image-slider">
-                                    <figure class="border-radius-10">
-                                        <img src="assets/imgs/shop/product-16-2.jpg" alt="product image">
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="assets/imgs/shop/product-16-1.jpg" alt="product image">
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="assets/imgs/shop/product-16-3.jpg" alt="product image">
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="assets/imgs/shop/product-16-4.jpg" alt="product image">
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="assets/imgs/shop/product-16-5.jpg" alt="product image">
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="assets/imgs/shop/product-16-6.jpg" alt="product image">
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="assets/imgs/shop/product-16-7.jpg" alt="product image">
-                                    </figure>
+                    <div>
+                        <div class="detail-info">
+                            <h3 class="title-detail mt-30">{{ $product->name }}</h3>
+                            <div class="product-detail-rating">
+                                <div class="pro-details-brand">
+                                    <span> Brands: <a href="shop.html">Bootstrap</a></span>
                                 </div>
-                                <!-- THUMBNAILS -->
-                                <div class="slider-nav-thumbnails pl-15 pr-15">
-                                    <div><img src="assets/imgs/shop/thumbnail-3.jpg" alt="product image"></div>
-                                    <div><img src="assets/imgs/shop/thumbnail-4.jpg" alt="product image"></div>
-                                    <div><img src="assets/imgs/shop/thumbnail-5.jpg" alt="product image"></div>
-                                    <div><img src="assets/imgs/shop/thumbnail-6.jpg" alt="product image"></div>
-                                    <div><img src="assets/imgs/shop/thumbnail-7.jpg" alt="product image"></div>
-                                    <div><img src="assets/imgs/shop/thumbnail-8.jpg" alt="product image"></div>
-                                    <div><img src="assets/imgs/shop/thumbnail-9.jpg" alt="product image"></div>
-                                </div>
-                            </div>
-                            <!-- End Gallery -->
-                            <div class="social-icons single-share">
-                                <ul class="text-grey-5 d-inline-block">
-                                    <li><strong class="mr-10">Share this:</strong></li>
-                                    <li class="social-facebook"><a href="#"><img
-                                                src="assets/imgs/theme/icons/icon-facebook.svg" alt=""></a></li>
-                                    <li class="social-twitter"> <a href="#"><img
-                                                src="assets/imgs/theme/icons/icon-twitter.svg" alt=""></a></li>
-                                    <li class="social-instagram"><a href="#"><img
-                                                src="assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
-                                    </li>
-                                    <li class="social-linkedin"><a href="#"><img
-                                                src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <div class="detail-info">
-                                <h3 class="title-detail mt-30">{{ $product->name }}</h3>
-                                <div class="product-detail-rating">
-                                    <div class="pro-details-brand">
-                                        <span> Brands: <a href="shop.html">Bootstrap</a></span>
+                                <div class="product-rate-cover text-end">
+                                    <div class="product-rate d-inline-block">
+                                        <div class="product-rating" style="width:90%">
+                                        </div>
                                     </div>
-                                    <div class="product-rate-cover text-end">
-                                        <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width:90%">
+                                    <span class="font-small ml-5 text-muted"> (25 reviews)</span>
+                                </div>
+                            </div>
+                            <div class=" product-price-cover d-flex justify-content-between">
+                                <div class="product-price primary-color float-left">
+                                    <ins><span class="text-brand">&#2547; {{ $product->regular_price }}</span></ins>
+                                    <ins><span class="old-price font-md ml-15">&#2547;
+                                            {{ $product->sale_price }}</span></ins>
+                                    <span class="save-price  font-md color3 ml-15">25% Off</span>
+                                </div>
+
+                                <a href="/cart" wire:navigate class="btn btn-warning py-2" type="button">
+                                    Go to Cart
+                                </a>
+
+                            </div>
+                            <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                            <h3 class="section-title mb-20"><span>More Items</span> To Consider</h3>
+                            <div class="row product-grid-4">
+                                @foreach ($random_products as $random_product)
+                                    <div class=" col-md-4 col-sm-6 col-xs-6 col-6" wire:key={{ $random_product->id }}>
+                                        <div class="product-cart-wrap mb-30">
+                                            <div class="product-img-action-wrap">
+                                                <div class="product-img product-img-zoom">
+                                                    <a wire:navigate href="/products/{{ $product->slug }}">
+                                                        <img class="default-img" src="{{ $random_product->image }}"
+                                                            alt="">
+                                                        <img class="hover-img"
+                                                            src="{{ asset('/') }}assets/imgs/shop/product-2-2.jpg"
+                                                            alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-content-wrap">
+                                                <div class="product-category">
+                                                    <a wire:navigate
+                                                        href="/product-category/{{ $product->category->slug }}">{{ $random_product->category->name }}</a>
+                                                </div>
+                                                <h2><a wire:navigate
+                                                        href="/products/{{ $product->slug }}">{{ $random_product->name }}</a>
+                                                </h2>
+                                                <div class="rating-result" title="90%">
+                                                    <span>
+                                                        <span>90%</span>
+                                                    </span>
+                                                </div>
+                                                <div class="product-price">
+                                                    <span>&#2547; {{ $random_product->regular_price }} </span>
+                                                    <span class="old-price">&#2547;
+                                                        {{ $random_product->sale_price }}</span>
+                                                </div>
+                                                <div class="product-action-1 show">
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up"
+                                                        href="cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                </div>
                                             </div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (25 reviews)</span>
                                     </div>
-                                </div>
-                                <div class="clearfix product-price-cover">
-                                    <div class="product-price primary-color float-left">
-                                        <ins><span class="text-brand">&#2547; {{ $product->regular_price }}</span></ins>
-                                        <ins><span class="old-price font-md ml-15">$200.00</span></ins>
-                                        <span class="save-price  font-md color3 ml-15">25% Off</span>
-                                    </div>
-                                </div>
-                                <div class="bt-1 border-color-1 mt-15 mb-15"></div>
-                                <div class="short-desc mb-30">
-                                    <p class="font-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam
-                                        rem officia, corrupti reiciendis minima nisi modi,!</p>
-                                </div>
-                                <div class="attr-detail attr-color mb-15">
-                                    <strong class="mr-10">Color</strong>
-                                    <ul class="list-filter color-filter">
-                                        <li><a href="#" data-color="Red"><span
-                                                    class="product-color-red"></span></a></li>
-                                        <li><a href="#" data-color="Yellow"><span
-                                                    class="product-color-yellow"></span></a></li>
-                                        <li class="active"><a href="#" data-color="White"><span
-                                                    class="product-color-white"></span></a></li>
-                                        <li><a href="#" data-color="Orange"><span
-                                                    class="product-color-orange"></span></a></li>
-                                        <li><a href="#" data-color="Cyan"><span
-                                                    class="product-color-cyan"></span></a></li>
-                                        <li><a href="#" data-color="Green"><span
-                                                    class="product-color-green"></span></a></li>
-                                        <li><a href="#" data-color="Purple"><span
-                                                    class="product-color-purple"></span></a></li>
-                                    </ul>
-                                </div>
-                                <div class="attr-detail attr-size">
-                                    <strong class="mr-10">Size</strong>
-                                    <ul class="list-filter size-filter font-small">
-                                        <li><a href="#">S</a></li>
-                                        <li class="active"><a href="#">M</a></li>
-                                        <li><a href="#">L</a></li>
-                                        <li><a href="#">XL</a></li>
-                                        <li><a href="#">XXL</a></li>
-                                    </ul>
-                                </div>
-                                <div class="bt-1 border-color-1 mt-30 mb-30"></div>
-                                <div class="detail-extralink">
-                                    <div class="detail-qty border radius">
-                                        <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                        <span class="qty-val">5</span>
-                                        <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                    </div>
-                                    <div class="product-extra-link2">
-                                        <button type="button" class="button button-add-to-cart"
-                                            wire:click.prevent="addToCart({{ $product }})">Add to cart</button>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                            href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i
-                                                class="fi-rs-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <ul class="product-meta font-xs color-grey mt-50">
-                                    <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
-                                    <li class="mb-5">Tags: <a href="#" rel="tag">Cloth</a>, <a
-                                            href="#" rel="tag">Women</a>, <a href="#"
-                                            rel="tag">Dress</a> </li>
-                                    <li>Availability:<span class="in-stock text-success ml-5">8 Items In Stock</span>
-                                    </li>
-                                </ul>
+                                @endforeach
                             </div>
-                            <!-- Detail Info -->
+
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <main class="main">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
                     <a href="/" wire:navigate rel="nofollow">Home</a>
                     <span></span> Fashion
-                    <span></span> Abstract Print Patchwork Dress
+                    <span></span> {{ $product->name }}
                 </div>
             </div>
         </div>
@@ -166,7 +113,7 @@
                         <div class="product-detail accordion-detail">
                             <div class="row mb-50">
                                 <div class="col-md-6 col-sm-12 col-xs-12">
-                                    <div class="detail-gallery">
+                                    <div class="detail-gallery" wire:ignore>
                                         <span class="zoom-icon"><i class="fi-rs-search"></i></span>
                                         <!-- MAIN SLIDES -->
                                         <div class="product-image-slider">
@@ -245,13 +192,15 @@
                                             </ul>
                                         </div>
                                         @if ($product->color)
-                                            <div class="attr-detail attr-color mb-15">
+                                            <div class="attr-detail attr-color mb-15" wire:ignore>
                                                 <strong class="mr-10">Color</strong>
                                                 <ul class="list-filter color-filter">
                                                     @foreach (json_decode($product->color) as $color)
                                                         <li wire:key="{{ $color }}">
-                                                            <a href="#" data-color="{{ $color }}">
-                                                                <span class="product-color-{{ $color }}"></span>
+                                                            <a wire:click.prevent="setColor('{{ $color }}')"
+                                                                data-color="{{ $color }}">
+                                                                <span
+                                                                    class="product-color-{{ $color }}"></span>
                                                             </a>
                                                         </li>
                                                     @endforeach
@@ -260,11 +209,11 @@
                                             </div>
                                         @endif
                                         @if ($product->size)
-                                            <div class="attr-detail attr-size">
+                                            <div class="attr-detail attr-size" wire:ignore>
                                                 <strong class="mr-10">Size</strong>
                                                 <ul class="list-filter size-filter font-small">
                                                     @foreach (json_decode($product->size) as $size)
-                                                        <li><a href="#"
+                                                        <li><a wire:click.prevent="setSize('{{ $size }}')"
                                                                 wire:key="{{ $size }}">{{ $size }}</a>
                                                         </li>
                                                     @endforeach
@@ -275,18 +224,37 @@
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                         <div class="detail-extralink">
                                             <div class="detail-qty border radius">
-                                                <a href="#" class="qty-down"><i
-                                                        class="fi-rs-angle-small-down"></i></a>
+                                                <a wire:click.prevent="increaseQuantity()" class="qty-up"><i
+                                                        class="fi-rs-angle-small-up"></i>
+                                                </a>
+
                                                 <span class="qty-val">{{ $quantity }}</span>
-                                                <a href="#" class="qty-up"><i
-                                                        class="fi-rs-angle-small-up"></i></a>
+                                                <a wire:click.prevent="decreaseQuantity()" class="qty-down"><i
+                                                        class="fi-rs-angle-small-down"></i>
+                                                </a>
                                             </div>
                                             <div class="product-extra-link2">
-                                                <button type="button" class="button button-add-to-cart"
-                                                    wire:click.prevent="addToCart({{ $product }})">Add to
-                                                    cart</button>
-                                                <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                                    href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <button type="submit" class="button button-add-to-cart"
+                                                    data-bs-toggle="modal" data-bs-target="#quickViewModal"
+                                                    wire:click.prevent="addToCart('{{ $product->id }}' , '{{ $product->name }}', '{{ $product->sale_price }}')">
+                                                    Add to cart
+                                                </button>
+
+                                                @php
+                                                    $wishlist_item = Cart::instance('wishlist')->content()->pluck('id');
+                                                @endphp
+
+                                                @if ($wishlist_item->contains($product->id))
+                                                    <a aria-label="Remove From Wishlist"
+                                                        class="action-btn hover-up wishlisted"
+                                                        wire:click.prevent="removeFromWishlist({{ $product->id }})"><i
+                                                            class="fi-rs-heart"></i></a>
+                                                @else
+                                                    <a aria-label="Add To Wishlist" class="action-btn hover-up"
+                                                        wire:click.prevent="addToWishlist('{{ $product->id }}' , '{{ $product->name }}', '{{ $product->sale_price }}')"><i
+                                                            class="fi-rs-heart"></i></a>
+                                                @endif
+
                                                 <a aria-label="Compare" class="action-btn hover-up"
                                                     href="compare.php"><i class="fi-rs-shuffle"></i></a>
                                             </div>
@@ -455,7 +423,7 @@
                                                         <div class="single-comment justify-content-between d-flex">
                                                             <div class="user justify-content-between d-flex">
                                                                 <div class="thumb text-center">
-                                                                    <img src="assets/imgs/page/avatar-6.jpg"
+                                                                    <img src="{{ asset('/') }}assets/imgs/page/avatar-6.jpg"
                                                                         alt="">
                                                                     <h6><a href="#">Jacky Chan</a></h6>
                                                                     <p class="font-xxs">Since 2012</p>
@@ -483,7 +451,7 @@
                                                         <div class="single-comment justify-content-between d-flex">
                                                             <div class="user justify-content-between d-flex">
                                                                 <div class="thumb text-center">
-                                                                    <img src="assets/imgs/page/avatar-7.jpg"
+                                                                    <img src="{{ asset('/') }}assets/imgs/page/avatar-7.jpg"
                                                                         alt="">
                                                                     <h6><a href="#">Ana Rosie</a></h6>
                                                                     <p class="font-xxs">Since 2008</p>
@@ -510,7 +478,7 @@
                                                         <div class="single-comment justify-content-between d-flex">
                                                             <div class="user justify-content-between d-flex">
                                                                 <div class="thumb text-center">
-                                                                    <img src="assets/imgs/page/avatar-8.jpg"
+                                                                    <img src="{{ asset('/') }}assets/imgs/page/avatar-8.jpg"
                                                                         alt="">
                                                                     <h6><a href="#">Steven Keny</a></h6>
                                                                     <p class="font-xxs">Since 2010</p>
@@ -698,7 +666,8 @@
                             <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
                             <ul class="categories">
                                 @foreach ($categories as $category)
-                                    <li><a href="shop.html" wire:key="{{ $category->id }}">{{ $category->name }}</a>
+                                    <li><a wire:navigate href="/product-category/{{ $category->slug }}"
+                                            wire:key="{{ $category->id }}">{{ $category->name }}</a>
                                     </li>
                                 @endforeach
 
@@ -745,8 +714,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="shop.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i>
-                                Fillter</a>
+                            <a href="/shop" wire:navigate class="btn btn-sm btn-default"><i
+                                    class="fi-rs-filter mr-5"></i>
+                                Filter</a>
                         </div>
                         <!-- Product sidebar Widget -->
                         <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
@@ -760,7 +730,8 @@
                                         <img src="{{ $product->image }}" alt="{{ $product->name }}">
                                     </div>
                                     <div class="content pt-10">
-                                        <h5><a href="product-details.html">{{ $product->name }}</a></h5>
+                                        <h5><a href="/products/{{ $product->slug }}"
+                                                wire:navigate>{{ $product->name }}</a></h5>
                                         <p class="price mb-0 mt-5">&#2547; {{ $product->regular_price }}</p>
                                         <div class="product-rate">
                                             <div class="product-rating" style="width:90%"></div>

@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class CartIconComponent extends Component
 {
-    protected $listeners = ['refreshComponent'=>'$refresh'];
+    protected $listeners = ['refreshCart'=>'$refresh'];
 
     public function removeItem($rowId){
         Cart::instance('cart')->remove($rowId);

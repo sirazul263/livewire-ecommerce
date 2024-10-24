@@ -19,9 +19,12 @@ class Product extends Model
         'sale_price',
         'image', 
         'images',
-        'created_at' , 
         'color',
         'size',
+        'is_active',
+        'is_featured', 
+        'on_sale',
+        'created_at' , 
         'updated_at',
     ];
 

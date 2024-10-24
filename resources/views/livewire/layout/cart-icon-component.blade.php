@@ -1,6 +1,6 @@
 <div class="header-action-icon-2">
     <a class="mini-cart-icon" href="/cart" wire:navigate>
-        <img alt="Surfside Media" src="../assets/imgs/theme/icons/icon-cart.svg">
+        <img alt="Surfside Media" src="{{ asset('/') }}assets/imgs/theme/icons/icon-cart.svg">
         <span class="pro-count blue">{{ count($cart_items) }}</span>
     </a>
 
@@ -11,7 +11,7 @@
                     <li>
                         <div class="shopping-cart-img">
                             <a href="/products/{{ $item->model->slug }}" wire:navigate>
-                                <img alt="Surfside Media" src="../assets/imgs/shop/thumbnail-3.jpg"></a>
+                                <img alt="{{ $item->model->name }}" src="{{ $item->model->image }}"></a>
                         </div>
                         <div class="shopping-cart-title">
                             <h4><a href="/products/{{ $item->model->slug }}"

@@ -10,8 +10,8 @@
         }
     </style>
 
-    <div wire:ignore class="modal fade custom-modal" id="quickViewModal" tabindex="-1"
-        aria-labelledby="quickViewModalLabel" aria-hidden="true">
+    <div wire:ignore class="modal fade  custom-modal" id="quickViewModal" tabindex="-1"
+        aria-labelledby="quickViewModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-content">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

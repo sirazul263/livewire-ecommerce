@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "015b6ed8525f784cdbbfcd761715a34d",
+    "content-hash": "20df7b9271ebab71c92fb3d5055de38a",
     "packages": [
         {
             "name": "brick/math",
@@ -134,6 +134,66 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "devfaysal/laravel-bangladesh-geocode",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/devfaysal/laravel-bangladesh-geocode.git",
+                "reference": "0cb405d91ab845e3f217e4b0089c4fc5931cc71f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/devfaysal/laravel-bangladesh-geocode/zipball/0cb405d91ab845e3f217e4b0089c4fc5931cc71f",
+                "reference": "0cb405d91ab845e3f217e4b0089c4fc5931cc71f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0",
+                "phpunit/phpunit": "^9.0|^10.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Devfaysal\\BangladeshGeocode\\BangladeshGeocodeServiceProvider"
+                    ],
+                    "aliases": {
+                        "BangladeshGeocode": "Devfaysal\\BangladeshGeocode\\BangladeshGeocodeFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Devfaysal\\BangladeshGeocode\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Faysal Ahamed",
+                    "email": "devfaysal@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "homepage": "https://github.com/devfaysal/laravel-bangladesh-geocode",
+            "keywords": [
+                "bangladesh-geocode",
+                "devfaysal"
+            ],
+            "support": {
+                "issues": "https://github.com/devfaysal/laravel-bangladesh-geocode/issues",
+                "source": "https://github.com/devfaysal/laravel-bangladesh-geocode/tree/2.2.0"
+            },
+            "time": "2024-03-13T08:58:46+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -2710,6 +2770,174 @@
                 }
             ],
             "time": "2024-10-19T01:02:53+00:00"
+        },
+        {
+            "name": "php-flasher/flasher-noty",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-flasher/flasher-noty.git",
+                "reference": "9c8c92b712b7ecf5bce186a1d2480a8fc34d3a6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-flasher/flasher-noty/zipball/9c8c92b712b7ecf5bce186a1d2480a8fc34d3a6c",
+                "reference": "9c8c92b712b7ecf5bce186a1d2480a8fc34d3a6c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "php-flasher/flasher": "^2.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "functions.php",
+                    "helpers.php"
+                ],
+                "psr-4": {
+                    "Flasher\\Noty\\Prime\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Younes ENNAJI",
+                    "email": "younes.ennaji.pro@gmail.com",
+                    "homepage": "https://www.linkedin.com/in/younes--ennaji/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHPFlasher - A powerful & easy-to-use package for adding flash messages to Laravel or Symfony projects. Provides feedback to users, improves engagement & enhances user experience. Intuitive design for beginners & experienced developers. A reliable, flexible solution.",
+            "homepage": "https://php-flasher.io",
+            "keywords": [
+                "customizable-alerts-php",
+                "flash-messages",
+                "interactive-web-notifications",
+                "laravel-notification",
+                "php-messaging-library",
+                "php-notification-system",
+                "php-user-interface",
+                "symfony-notification",
+                "user-engagement-php",
+                "user-feedback-tools",
+                "web-application-notifications"
+            ],
+            "support": {
+                "issues": "https://github.com/php-flasher/php-flasher/issues",
+                "source": "https://github.com/php-flasher/php-flasher"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/yoeunes",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/yoeunes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://ko-fi.com/yoeunes",
+                    "type": "ko_fi"
+                },
+                {
+                    "url": "https://opencollective.com/php-flasher",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/yoeunes",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2024-10-13T20:39:22+00:00"
+        },
+        {
+            "name": "php-flasher/flasher-noty-laravel",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-flasher/flasher-noty-laravel.git",
+                "reference": "d8547c750838fd19817bb827ea71cdd90c60fb0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-flasher/flasher-noty-laravel/zipball/d8547c750838fd19817bb827ea71cdd90c60fb0e",
+                "reference": "d8547c750838fd19817bb827ea71cdd90c60fb0e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "php-flasher/flasher-laravel": "^2.1.0",
+                "php-flasher/flasher-noty": "^2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Flasher\\Noty\\Laravel\\FlasherNotyServiceProvider"
+                    ],
+                    "aliases": {
+                        "Noty": "Flasher\\Noty\\Laravel\\Facade\\Noty"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Flasher\\Noty\\Laravel\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Younes ENNAJI",
+                    "email": "younes.ennaji.pro@gmail.com",
+                    "homepage": "https://www.linkedin.com/in/younes--ennaji/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Use Noty.js for engaging flash notifications in Laravel with PHPFlasher. Combine the power of Noty.js and Laravel for rich, interactive user notifications.",
+            "homepage": "https://php-flasher.io",
+            "keywords": [
+                "flash-notifications",
+                "laravel",
+                "noty.js",
+                "open-source",
+                "phpflasher",
+                "user-feedback"
+            ],
+            "support": {
+                "issues": "https://github.com/php-flasher/php-flasher/issues",
+                "source": "https://github.com/php-flasher/php-flasher"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/yoeunes",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/yoeunes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://ko-fi.com/yoeunes",
+                    "type": "ko_fi"
+                },
+                {
+                    "url": "https://opencollective.com/php-flasher",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/yoeunes",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2024-10-05T14:34:57+00:00"
         },
         {
             "name": "phpoption/phpoption",

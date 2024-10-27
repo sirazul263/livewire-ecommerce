@@ -32,13 +32,13 @@ class CartComponent extends Component
     public function removeItem($rowId){
         Cart::instance('cart')->remove($rowId);
         $this->dispatch('refreshCart');
-        flash()->success('Product has been removed  successfully!');
+        flash()->success('Product has been removed!');
     }
 
     public function clearCart(){
         Cart::instance('cart')->destroy();
         $this->dispatch('refreshCart');
-        flash()->success('All the products form the cart  have been removed  successfully!');
+        flash()->success('All the products form the cart  have been removed!');
     }
 
 

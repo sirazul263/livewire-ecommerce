@@ -15,6 +15,7 @@
     <title>{{ $title ?? 'Surfside Media' }}</title>
     <link rel="stylesheet" href="{{ asset('/') }}assets/css/main.css">
     <link rel="stylesheet" href="{{ asset('/') }}assets/css/custom.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/icheck-material@1.0.1/icheck-material.min.css">
     @vite(['resources/js/app.js'])
     @livewireStyles
 </head>
